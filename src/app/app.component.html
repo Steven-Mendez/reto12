@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 my-3">
+      <app-form-new-item
+        (newItemEvent)="addNewCity($event)"
+        [label]="'City'"
+        [className]="'btn-secondary'"
+      ></app-form-new-item>
+    </div>
+    <hr />
+    <div class="col-md-8">
+      <ul>
+        <app-cities
+          *ngFor="let city of cities"
+          (cityClickedEvent)="onCityClicked(city)"
+          [city]="city"
+          [selection]="selection"
+        ></app-cities>
+      </ul>
+    </div>
+    <input type="text" (keypress)="onSearch()" />
+    <div class="col-md-4">
+      <div *ngIf="selection">
+        <p>Your city is: {{ selection }}</p>
+        <app-button
+          (click)="onClear()"
+          [color]="'blue'"
+          [label]="'Clear your selection'"
+        ></app-button>
+      </div>
+    </div>
+  </div>
+</div>
