@@ -13,6 +13,7 @@ export class AppComponent {
   url =
     'https://th.bing.com/th/id/R.34f4c604cd9bfd44d39ece8f6a01363f?rik=7OIxdjJ6xOdnZA&pid=ImgRaw&r=0';
   selection!: string;
+  criteria = '';
 
   addNewCity(city: string): void {
     this.cities.push(city);

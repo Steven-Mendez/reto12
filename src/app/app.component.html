@@ -1,24 +1,34 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 my-3">
+    <div class="col-md-6 my-3">
       <app-form-new-item
         (newItemEvent)="addNewCity($event)"
         [label]="'City'"
         [className]="'btn-secondary'"
       ></app-form-new-item>
     </div>
+    <div class="col-md-6 my-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="filter..."
+        [(ngModel)]="criteria"
+      />
+    </div>
     <hr />
     <div class="col-md-8">
       <ul>
         <app-cities
-          *ngFor="let city of cities"
+          *ngFor="let city of cities | filter : criteria"
           (cityClickedEvent)="onCityClicked(city)"
           [city]="city"
           [selection]="selection"
         ></app-cities>
       </ul>
     </div>
-    <input type="text" (keypress)="onSearch()" />
+    <!-- <p>{{ "6/15/15, 9:03 AM" | date : "full" }}</p> -->
+    <!-- <p>My birthday is: {{ "6/15/15, 9:03 AM" | date : "full" | uppercase }}</p> -->
+    <p>{{ "999" | currency : "C$" }}</p>
     <div class="col-md-4">
       <div *ngIf="selection">
         <p>Your city is: {{ selection }}</p>

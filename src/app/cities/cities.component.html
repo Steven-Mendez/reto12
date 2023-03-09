@@ -2,5 +2,5 @@
   (click)="onCityClicked()"
   [ngClass]="{ 'alert alert-info': city === selection }"
 >
-  {{ city }}
+  {{ city | titlecase }}
 </li>
